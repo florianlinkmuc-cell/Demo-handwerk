@@ -836,13 +836,12 @@
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
-  <!-- ✅ CHATBOT EINBINDEN (Chatling) -->
-  <!-- Füge hier deinen Chatling-Embed Code ein. Beispiel: -->
-  <!--
-  <script>
-    window.chatlingAsyncInit = function() { Chatling.init({ ... }); };
-  </script>
-  <script async src="https://.../chatling.js"></script>
-  -->
+ <!-- Chatling Chatbot -->
+<script>
+  window.chatlingSettings = {
+    chatbotId: "3142966435"
+  };
+</script>
+<script async src="https://chatling.ai/js/embed.js"></script>
 </body>
 </html>
