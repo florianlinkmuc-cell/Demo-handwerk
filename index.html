@@ -20,7 +20,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-dark); color: var(--text-light); line-height: 1.6; scroll-behavior: smooth; }
 
-        /* Nav */
+        /* Navigation */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 10%; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .logo { font-size: 1.5rem; font-weight: 700; color: var(--white); }
         .logo span { color: var(--primary); }
@@ -28,55 +28,61 @@
         .nav-links a { text-decoration: none; color: var(--text-light); font-weight: 500; transition: color 0.3s; }
         .nav-links a:hover { color: var(--primary); }
 
-        /* Hero */
+        /* Hero Bereich */
         .hero { height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 10%; background: radial-gradient(circle at top right, rgba(0, 123, 255, 0.1), transparent), linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)); padding-top: 80px; }
         .hero-content h1 { font-size: 3.5rem; margin-bottom: 1.5rem; line-height: 1.2; }
         .hero-content p { font-size: 1.25rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 2rem; }
+        
         .btn { display: inline-block; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s; cursor: pointer; border: none; }
         .btn-primary { background-color: var(--primary); color: var(--white); }
 
-        /* Partners */
+        /* Partner Logos */
         .partners { padding: 3rem 10%; background: #0b1120; display: flex; justify-content: center; align-items: center; gap: 4rem; flex-wrap: wrap; opacity: 0.5; filter: grayscale(1); }
         .partner-logo { font-size: 1.1rem; font-weight: 800; color: var(--text-muted); }
 
-        /* Stats Section */
+        /* Statistik Leiste */
         .stats { display: flex; justify-content: space-around; padding: 4rem 10%; background: var(--bg-card); text-align: center; }
         .stat-item h3 { font-size: 2.5rem; color: var(--primary); }
         .stat-item p { color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; }
 
-        /* Sections */
+        /* Sektionen Allgemein */
         section { padding: 100px 10%; }
         .section-title { text-align: center; margin-bottom: 4rem; }
         .section-title h2 { font-size: 2.5rem; margin-bottom: 1rem; }
 
-        /* Grid Cards */
+        /* Leistungen Cards */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
         .card { background: var(--bg-card); padding: 2.5rem; border-radius: 12px; transition: transform 0.3s; border: 1px solid rgba(255,255,255,0.05); }
         .card:hover { transform: translateY(-10px); border-color: var(--primary); }
         .card h3 { margin-bottom: 1rem; color: var(--primary); }
 
-        /* Comparison Section */
+        /* Vorher-Nachher Bereich (Badezimmer) */
         .comparison-container { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
         .comparison-item { position: relative; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #161e2e; }
-        .comparison-item img { width: 100%; height: 450px; object-fit: cover; display: block; transition: transform 0.5s; }
-        .comparison-item:hover img { transform: scale(1.05); }
-        .label { position: absolute; top: 20px; left: 20px; background: var(--primary); color: white; padding: 5px 15px; border-radius: 4px; font-weight: 700; z-index: 10; font-size: 0.8rem; }
+        .comparison-item img { width: 100%; height: 450px; object-fit: cover; display: block; }
+        .label { position: absolute; top: 20px; left: 20px; background: var(--primary); color: white; padding: 6px 15px; border-radius: 4px; font-weight: 700; z-index: 10; font-size: 0.8rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
 
-        /* FAQ Section */
+        /* FAQ Bereich */
         .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        .faq-item { background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 8px; }
-        .faq-item h4 { color: var(--accent); margin-bottom: 0.5rem; }
+        .faq-item { background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 8px; border-left: 3px solid var(--primary); }
+        .faq-item h4 { color: var(--white); margin-bottom: 0.5rem; }
 
-        /* Chat Promo */
+        /* Chat Promo Box */
         .chat-promo { background: linear-gradient(135deg, var(--primary-dark), #1e3a8a); padding: 3rem; border-radius: 15px; text-align: center; margin: 4rem 0; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
         .chat-promo h3 { font-size: 2rem; margin-bottom: 1rem; }
 
-        /* Contact Area */
+        /* Kontakt Formular */
         .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
         .fake-form { display: flex; flex-direction: column; gap: 1rem; }
         .fake-form input, .fake-form textarea { padding: 1.2rem; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; width: 100%; }
         
         footer { padding: 4rem 10%; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); color: var(--text-muted); }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(32, 201, 151, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(32, 201, 151, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(32, 201, 151, 0); }
+        }
 
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.2rem; }
@@ -93,19 +99,19 @@
             <a href="#home">Startseite</a>
             <a href="#services">Leistungen</a>
             <a href="#projekte">Referenzen</a>
-            <a href="#faq">Häufige Fragen</a>
+            <a href="#faq">FAQ</a>
             <a href="#kontakt">Kontakt</a>
         </div>
     </nav>
 
     <header class="hero" id="home">
         <div class="hero-content">
-            <h1>Ihr Zuhause in besten Händen.</h1>
-            <p>Meisterbetrieb für Heizung, Sanitär und Klimatechnik. Wir begleiten Sie von der ersten Beratung bis zur fertigen Montage.</p>
-            <a href="#kontakt" class="btn btn-primary">Jetzt Projekt anfragen</a>
+            <h1>Sanitär- & Heizungstechnik auf Meister-Niveau.</h1>
+            <p>Ihr zuverlässiger Partner für moderne Bäder, effiziente Heizsysteme und schnelle Hilfe im Notfall.</p>
+            <a href="#kontakt" class="btn btn-primary">Jetzt Beratung anfordern</a>
             <p style="margin-top: 2rem; font-size: 1rem; color: var(--accent); font-weight: 600;">
                 <span style="display: inline-block; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; margin-right: 8px; animation: pulse 2s infinite;"></span>
-                Digitaler Assistent ist online – Antwort in Sekunden
+                KI-Service aktiv – Fragen Sie uns direkt per Chat
             </p>
         </div>
     </header>
@@ -115,34 +121,32 @@
         <div class="partner-logo">BUDERUS</div>
         <div class="partner-logo">VAILLANT</div>
         <div class="partner-logo">GROHE</div>
-        <div class="partner-logo">HANSGROHE</div>
         <div class="partner-logo">GEBERIT</div>
     </div>
 
     <div class="stats">
         <div class="stat-item"><h3>25+</h3><p>Jahre Erfahrung</p></div>
-        <div class="stat-item"><h3>1.200+</h3><p>Projekte abgeschlossen</p></div>
-        <div class="stat-item"><h3>24h</h3><p>Notfall-Service</p></div>
-        <div class="stat-item"><h3>100%</h3><p>Meisterqualität</p></div>
+        <div class="stat-item"><h3>1.200+</h3><p>Bad-Sanierungen</p></div>
+        <div class="stat-item"><h3>24h</h3><p>Bereitschaft</p></div>
     </div>
 
     <section id="services">
         <div class="section-title">
-            <h2>Unsere Expertise</h2>
-            <p>Rundum-Service für Ihre Haustechnik</p>
+            <h2>Unsere Leistungen</h2>
+            <p>Von der Wartung bis zum kompletten Neubau.</p>
         </div>
         <div class="grid">
             <div class="card">
-                <h3>Wärmepumpen</h3>
-                <p>Nachhaltig heizen und Heizkosten sparen. Wir beraten Sie zu Förderung und Installation.</p>
+                <h3>Badmodernisierung</h3>
+                <p>Wir verwandeln Ihr altes Bad in eine moderne Wohlfühloase – barrierefrei und stilvoll.</p>
             </div>
             <div class="card">
-                <h3>Bad-Design</h3>
-                <p>Vom Gäste-WC bis zum Luxusbad. Wir planen Ihr Projekt millimetergenau in 3D.</p>
+                <h3>Heizungstechnik</h3>
+                <p>Installation und Wartung von Wärmepumpen, Gas- und Ölheizungen führender Marken.</p>
             </div>
             <div class="card">
-                <h3>Heizungswartung</h3>
-                <p>Verlängern Sie die Lebensdauer Ihrer Anlage und vermeiden Sie teure Reparaturen.</p>
+                <h3>Sanitär-Notdienst</h3>
+                <p>Verstopfungen, Rohrbruch oder Heizungsausfall? Unser Team ist sofort für Sie da.</p>
             </div>
         </div>
     </section>
@@ -150,16 +154,16 @@
     <section id="projekte" style="background: #0b1120;">
         <div class="section-title">
             <h2>Bad-Transformation</h2>
-            <p>Echte Ergebnisse unserer Arbeit.</p>
+            <p>Echte Ergebnisse unserer Sanierungsprojekte.</p>
         </div>
         <div class="comparison-container">
             <div class="comparison-item">
                 <span class="label">VORHER</span>
-                <img src="https://images.pexels.com/photos/4846437/pexels-photo-4846437.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Altes Badezimmer">
+                <img src="https://images.pexels.com/photos/5411784/pexels-photo-5411784.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Altes Badezimmer">
             </div>
             <div class="comparison-item">
                 <span class="label">NACHHER</span>
-                <img src="https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Modernes Badezimmer">
+                <img src="https://images.pexels.com/photos/6045028/pexels-photo-6045028.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Modernes Badezimmer">
             </div>
         </div>
     </section>
@@ -167,67 +171,46 @@
     <section id="faq">
         <div class="section-title">
             <h2>Häufige Fragen</h2>
-            <p>Schnelle Antworten auf Ihre Anliegen.</p>
+            <p>Wir haben die Antworten für Sie.</p>
         </div>
         <div class="faq-grid">
             <div class="faq-item">
-                <h4>Wie schnell ist der Notdienst vor Ort?</h4>
-                <p>In der Regel erreichen wir Kunden im Stadtgebiet innerhalb von 60-90 Minuten.</p>
+                <h4>Was kostet eine Badsanierung?</h4>
+                <p>Die Kosten variieren je nach Ausstattung. Nutzen Sie unseren Chatbot für eine erste Kostenschätzung!</p>
             </div>
             <div class="faq-item">
-                <h4>Gibt es Förderungen für Wärmepumpen?</h4>
-                <p>Ja, bis zu 70% sind möglich. Fragen Sie unseren Chatbot nach den aktuellen Details!</p>
-            </div>
-            <div class="faq-item">
-                <h4>Übernehmen Sie auch Kleinstreparaturen?</h4>
-                <p>Selbstverständlich. Vom tropfenden Hahn bis zum Rohrbruch helfen wir gern.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Wie lange dauert eine Badrenovierung?</h4>
-                <p>Ein Standard-Bad dauert von der Demontage bis zur Übergabe ca. 10-14 Arbeitstage.</p>
+                <h4>Wie schnell helfen Sie bei Notfällen?</h4>
+                <p>Innerhalb des Stadtgebiets sind wir im Notfall meist innerhalb von 60 Minuten bei Ihnen.</p>
             </div>
         </div>
         
         <div class="chat-promo">
-            <h3>Haben Sie weitere Fragen?</h3>
-            <p>Unser KI-Assistent wurde mit all unserem Fachwissen gefüttert und kann Ihnen sofort Auskunft geben.</p>
-            <p style="margin-top: 1rem; font-weight: 700;">Probieren Sie es einfach aus – unten rechts klicken!</p>
+            <h3>Haben Sie noch Fragen?</h3>
+            <p>Unser digitaler Assistent beantwortet Ihnen sofort alle Fragen zu Technik, Terminen und Preisen.</p>
+            <p style="margin-top: 1rem; font-weight: 700;">Starten Sie den Chat einfach unten rechts!</p>
         </div>
     </section>
 
     <section id="kontakt">
         <div class="contact-container">
             <div class="contact-info">
-                <h2>Kontakt & Anfahrt</h2>
-                <p style="margin-bottom: 2rem;">Wir freuen uns auf Ihre Anfrage und beraten Sie gern unverbindlich.</p>
+                <h2>Kontakt</h2>
                 <p><strong>H&S Haustechnik GmbH</strong><br>Handwerksstraße 12<br>12345 Musterstadt</p>
                 <br>
                 <p>📞 01234 / 567 89 0<br>📧 info@hs-meisterbetrieb.de</p>
-                <div style="margin-top: 2rem; height: 200px; background: #1e293b; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); border: 1px dashed var(--text-muted);">
-                    [Interaktive Karte lädt...]
-                </div>
             </div>
             <div class="fake-form">
                 <input type="text" placeholder="Name">
-                <input type="email" placeholder="E-Mail Adresse">
-                <input type="text" placeholder="Telefonnummer">
-                <textarea rows="4" placeholder="Beschreiben Sie kurz Ihr Anliegen (z.B. Heizungsausfall, Badplanung)"></textarea>
-                <button class="btn btn-primary">Anfrage absenden</button>
+                <input type="email" placeholder="E-Mail">
+                <textarea rows="4" placeholder="Ihr Anliegen..."></textarea>
+                <button class="btn btn-primary">Anfrage senden</button>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 H&S Haustechnik GmbH | Ihr Meisterbetrieb vor Ort</p>
-        <p style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.5;">Impressum | Datenschutz | AGB</p>
+        <p>&copy; 2026 H&S Haustechnik GmbH | Meisterbetrieb</p>
     </footer>
 
-    <style>
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(32, 201, 151, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(32, 201, 151, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(32, 201, 151, 0); }
-        }
-    </style>
 </body>
 </html>
