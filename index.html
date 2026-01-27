@@ -31,7 +31,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Navigation */
         nav {
             display: flex;
             justify-content: space-between;
@@ -52,14 +51,9 @@
             color: var(--white);
         }
 
-        .logo span {
-            color: var(--primary);
-        }
+        .logo span { color: var(--primary); }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
+        .nav-links { display: flex; gap: 2rem; }
 
         .nav-links a {
             text-decoration: none;
@@ -68,13 +62,11 @@
             transition: color 0.3s;
         }
 
-        .nav-links a:hover {
-            color: var(--primary);
-        }
+        .nav-links a:hover { color: var(--primary); }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
+            height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -106,6 +98,7 @@
             text-decoration: none;
             transition: all 0.3s;
             cursor: pointer;
+            border: none;
         }
 
         .btn-primary {
@@ -113,25 +106,69 @@
             color: var(--white);
         }
 
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
+        /* Partner Logos (Verbesserung Punkt 4) */
+        .partners {
+            padding: 3rem 10%;
+            background: #0b1120;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            opacity: 0.6;
+            filter: grayscale(1);
         }
 
-        /* Service Section */
-        section {
+        .partner-logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            letter-spacing: -1px;
+        }
+
+        /* Showcase Section (Verbesserung Punkt 3) */
+        .showcase {
             padding: 100px 10%;
+            background: var(--bg-dark);
         }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .comparison-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
         }
+
+        .comparison-item img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .label {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.7);
+            padding: 5px 15px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        /* Services & Rest */
+        section { padding: 100px 10%; }
+
+        .section-title { text-align: center; margin-bottom: 4rem; }
 
         .grid {
             display: grid;
@@ -143,97 +180,28 @@
             background: var(--bg-card);
             padding: 2rem;
             border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.05);
             transition: transform 0.3s;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-        }
+        .card:hover { transform: translateY(-10px); }
 
-        .card h3 {
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
+        .card h3 { margin-bottom: 1rem; color: var(--primary); }
 
-        /* Workflow Section */
-        .workflow {
-            background: #161e2e;
-        }
-
-        .steps {
-            display: flex;
-            justify-content: space-between;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .step {
-            flex: 1;
-            min-width: 200px;
-            text-align: center;
-        }
-
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        /* Trust Elements */
-        .trust-bar {
-            display: flex;
-            justify-content: space-around;
-            padding: 3rem 10%;
-            background: var(--bg-card);
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        .trust-item {
-            text-align: center;
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-
-        /* Chatbot Notice */
         .chat-promo {
             background: linear-gradient(90deg, var(--primary), var(--accent));
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 12px;
             text-align: center;
             margin-top: 4rem;
         }
 
-        /* Contact Area */
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
         }
 
-        .contact-info h3 {
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-info p {
-            margin-bottom: 1rem;
-            color: var(--text-muted);
-        }
-
-        .fake-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
+        .fake-form { display: flex; flex-direction: column; gap: 1rem; }
 
         .fake-form input, .fake-form textarea {
             padding: 1rem;
@@ -248,14 +216,12 @@
             text-align: center;
             border-top: 1px solid rgba(255,255,255,0.1);
             color: var(--text-muted);
-            font-size: 0.9rem;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.5rem; }
-            .nav-links { display: none; }
-            .contact-container { grid-template-columns: 1fr; }
+            .comparison-container { grid-template-columns: 1fr; }
+            .partners { gap: 2rem; }
         }
     </style>
 </head>
@@ -266,7 +232,7 @@
         <div class="nav-links">
             <a href="#home">Startseite</a>
             <a href="#services">Leistungen</a>
-            <a href="#workflow">Ablauf</a>
+            <a href="#projekte">Projekte</a>
             <a href="#kontakt">Kontakt</a>
         </div>
     </nav>
@@ -274,7 +240,7 @@
     <header class="hero" id="home">
         <div class="hero-content">
             <h1>Heizung kaputt? <br>Wir helfen schnell und zuverlässig.</h1>
-            <p>Ihr lokaler Meisterbetrieb für moderne Heizsysteme, Badmodernisierung und Notdienst. Erfahren, fair und direkt bei Ihnen vor Ort.</p>
+            <p>Ihr lokaler Meisterbetrieb für moderne Heizsysteme und Badmodernisierung. Erfahren, fair und direkt bei Ihnen vor Ort.</p>
             <a href="#kontakt" class="btn btn-primary">Jetzt Termin vereinbaren</a>
             <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--accent);">
                 ⚡ Schnelle Hilfe benötigt? Nutzen Sie unseren <strong>Service-Chat unten rechts!</strong>
@@ -282,97 +248,80 @@
         </div>
     </header>
 
-    <div class="trust-bar">
-        <div class="trust-item">✓ Meisterbetrieb</div>
-        <div class="trust-item">✓ 24h Notdienst</div>
-        <div class="trust-item">✓ Faire Festpreise</div>
-        <div class="trust-item">✓ Regionale Nähe</div>
+    <div class="partners">
+        <div class="partner-logo">VIESSMANN</div>
+        <div class="partner-logo">BUDERUS</div>
+        <div class="partner-logo">VAILLANT</div>
+        <div class="partner-logo">GROHE</div>
+        <div class="partner-logo">VILLEROY & BOCH</div>
     </div>
 
     <section id="services">
         <div class="section-title">
             <h2>Unsere Leistungen</h2>
-            <p>Von der kleinen Reparatur bis zur kompletten energetischen Sanierung.</p>
+            <p>Qualität vom Innungs-Meisterbetrieb.</p>
         </div>
         <div class="grid">
             <div class="card">
                 <h3>Heizungsservice</h3>
-                <p>Wartung, Reparatur und Neuinstallation von Gas- und Ölheizungen. Wir sorgen dafür, dass es warm bleibt.</p>
-            </div>
-            <div class="card">
-                <h3>Wärmepumpen</h3>
-                <p>Zukunftssicheres Heizen: Wir beraten, planen und installieren Ihre neue Wärmepumpe inklusive staatlicher Förderung.</p>
+                <p>Wartung, Reparatur und Neuinstallation von Gas- und Ölheizungen sowie modernste Wärmepumpen.</p>
             </div>
             <div class="card">
                 <h3>Sanitär & Bad</h3>
-                <p>Traumbad oder tropfender Wasserhahn? Wir übernehmen die Badplanung sowie alle Sanitär-Installationen.</p>
+                <p>Komplette Badmodernisierung aus einer Hand – von der Planung bis zur Montage.</p>
             </div>
             <div class="card">
                 <h3>Notdienst</h3>
-                <p>Rohrbruch oder Heizungsausfall am Wochenende? Unser Notfall-Team ist schnellstmöglich bei Ihnen.</p>
+                <p>24/7 Notfall-Service bei Rohrbruch oder Heizungsausfall in Ihrer Region.</p>
             </div>
         </div>
     </section>
 
-    <section class="workflow" id="workflow">
+    <section id="projekte" class="showcase">
         <div class="section-title">
-            <h2>So einfach funktioniert es</h2>
-            <p>In vier Schritten zu Ihrem Ziel.</p>
+            <h2>Badmodernisierung</h2>
+            <p>Sehen Sie den Unterschied: Von der alten Nasszelle zur modernen Wellness-Oase.</p>
         </div>
-        <div class="steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <h4>Anfrage stellen</h4>
-                <p>Per Telefon, Formular oder bequem im Chat.</p>
+        <div class="comparison-container">
+            <div class="comparison-item">
+                <span class="label">Vorher</span>
+                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80" alt="Altes Badezimmer">
             </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <h4>Rückruf erhalten</h4>
-                <p>Wir klären Details und vereinbaren einen Termin.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <h4>Vor-Ort-Termin</h4>
-                <p>Unsere Experten prüfen die Lage und beraten Sie.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">4</div>
-                <h4>Ausführung</h4>
-                <p>Saubere, fachgerechte Arbeit zum vereinbarten Preis.</p>
+            <div class="comparison-item">
+                <span class="label">Nachher</span>
+                <img src="https://images.unsplash.com/photo-1620626011761-9963d7521576?auto=format&fit=crop&w=800&q=80" alt="Modernes Badezimmer">
             </div>
         </div>
-
         <div class="chat-promo">
-            <h3>Keine Lust auf Warteschleifen?</h3>
-            <p>Nutzen Sie unseren intelligenten Service-Assistenten (unten rechts), um sofort eine erste Einschätzung oder einen Rückrufwunsch zu hinterlassen.</p>
+            <h3>Planen Sie Ihr neues Bad?</h3>
+            <p>Nutzen Sie unseren Chatbot für eine erste Kostenschätzung oder um Fotos Ihres aktuellen Bads zur Einschätzung hochzuladen.</p>
         </div>
     </section>
 
     <section id="kontakt">
         <div class="section-title">
             <h2>Kontaktieren Sie uns</h2>
-            <p>Wir freuen uns auf Ihr Projekt.</p>
+            <p>Senden Sie uns eine Nachricht oder nutzen Sie den Chat für eine schnellere Antwort.</p>
         </div>
         <div class="contact-container">
             <div class="contact-info">
                 <h3>H&S Haustechnik GmbH</h3>
                 <p><strong>Adresse:</strong><br>Handwerksstraße 12<br>12345 Musterstadt</p>
                 <p><strong>Telefon:</strong><br>01234 / 567 89 0</p>
-                <p><strong>E-Mail:</strong><br>info@hs-haustechnik-beispiel.de</p>
                 <p><strong>Bürozeiten:</strong><br>Mo - Fr: 07:30 - 16:30 Uhr</p>
             </div>
             <div class="fake-form">
-                <input type="text" placeholder="Ihr Name">
-                <input type="email" placeholder="Ihre E-Mail-Adresse">
-                <textarea rows="5" placeholder="Wie können wir Ihnen helfen?"></textarea>
-                <button class="btn btn-primary" style="border: none;">Nachricht senden</button>
+                <input type="text" placeholder="Name">
+                <input type="email" placeholder="E-Mail">
+                <textarea rows="5" placeholder="Anliegen"></textarea>
+                <button class="btn btn-primary">Nachricht senden</button>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 H&S Haustechnik GmbH | Impressum | Datenschutz</p>
+        <p>&copy; 2026 H&S Haustechnik GmbH | Meisterbetrieb | Impressum</p>
     </footer>
 
-    </body>
+</body>
 </html>
