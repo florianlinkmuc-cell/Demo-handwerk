@@ -1,842 +1,378 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NordWärme • Heizung & Sanitär in Hamburg</title>
-  <meta name="description" content="NordWärme Heizung & Sanitär – Meisterbetrieb in Hamburg. Wärmepumpen, Heizungsmodernisierung, Bad, Sanitär, Wartung & Notdienst. Schnell, sauber, zuverlässig." />
-  <meta name="theme-color" content="#0b1220" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H&S Haustechnik | Ihr Meisterbetrieb für Heizung & Sanitär</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #007BFF;
+            --primary-dark: #0056b3;
+            --accent: #20c997;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --white: #ffffff;
+        }
 
-  <style>
-    :root{
-      --bg:#0b1220;
-      --bg2:#0e1a31;
-      --card:#101f3a;
-      --card2:#0f1b33;
-      --text:#eef3ff;
-      --muted:#b8c5e8;
-      --line:rgba(255,255,255,.10);
-      --brand:#3b82f6;
-      --brand2:#22c55e;
-      --warn:#f59e0b;
-      --danger:#ef4444;
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
-      --radius:18px;
-      --max:1180px;
-    }
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(59,130,246,.30), transparent 60%),
-        radial-gradient(900px 500px at 90% 10%, rgba(34,197,94,.22), transparent 60%),
-        radial-gradient(900px 500px at 50% 110%, rgba(245,158,11,.15), transparent 60%),
-        linear-gradient(180deg, var(--bg) 0%, #070b14 100%);
-      line-height:1.45;
-    }
-    a{ color:inherit; text-decoration:none; }
-    .wrap{ width:min(var(--max), calc(100% - 40px)); margin:0 auto; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Topbar */
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background: rgba(11,18,32,.65);
-      border-bottom:1px solid var(--line);
-    }
-    .topbar-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:14px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px;
-      min-width: 220px;
-    }
-    .logo{
-      width:38px; height:38px; border-radius:12px;
-      background:
-        radial-gradient(12px 12px at 30% 30%, rgba(255,255,255,.6), transparent 60%),
-        linear-gradient(135deg, rgba(59,130,246,1), rgba(34,197,94,1));
-      box-shadow: 0 12px 30px rgba(59,130,246,.25);
-    }
-    .brand b{ display:block; letter-spacing:.2px; }
-    .brand small{ display:block; color:var(--muted); margin-top:1px; font-size:12px; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
 
-    nav{
-      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    .navlink{
-      padding:9px 11px; border-radius:12px;
-      color:var(--muted);
-      border:1px solid transparent;
-      transition: .2s ease;
-      font-size:14px;
-    }
-    .navlink:hover{ color:var(--text); border-color:rgba(255,255,255,.12); background:rgba(255,255,255,.04); }
-    .navlink.active{
-      color:var(--text);
-      border-color:rgba(59,130,246,.35);
-      background:rgba(59,130,246,.12);
-    }
-    .actions{
-      display:flex; gap:10px; align-items:center;
-      min-width: 220px;
-      justify-content:flex-end;
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-      font-weight:600;
-      transition:.2s ease;
-      cursor:pointer;
-      font-size:14px;
-      gap:8px;
-      white-space:nowrap;
-    }
-    .btn:hover{ transform: translateY(-1px); background:rgba(255,255,255,.06); }
-    .btn.primary{
-      border-color: rgba(59,130,246,.35);
-      background: linear-gradient(135deg, rgba(59,130,246,.95), rgba(59,130,246,.55));
-      box-shadow: 0 16px 40px rgba(59,130,246,.18);
-    }
-    .btn.green{
-      border-color: rgba(34,197,94,.35);
-      background: linear-gradient(135deg, rgba(34,197,94,.95), rgba(34,197,94,.55));
-      box-shadow: 0 16px 40px rgba(34,197,94,.16);
-    }
-    .btn.ghost{ background:transparent; }
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
-      color:var(--muted);
-      font-size:12px;
-      white-space:nowrap;
-    }
-    .dot{ width:8px; height:8px; border-radius:50%; background:var(--brand2); box-shadow:0 0 0 4px rgba(34,197,94,.15); }
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 10%;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
 
-    /* Layout sections */
-    main{ padding:34px 0 80px; }
-    .view{ display:none; }
-    .view.active{ display:block; animation:fadeIn .25s ease both; }
-    @keyframes fadeIn{ from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);} }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+        }
 
-    .hero{
-      display:grid; grid-template-columns: 1.2fr .8fr;
-      gap:26px;
-      align-items:stretch;
-      margin-top:12px;
-    }
-    .card{
-      border:1px solid rgba(255,255,255,.12);
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    .hero-left{ padding:26px; position:relative; overflow:hidden; }
-    .hero-left:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(600px 300px at 20% 0%, rgba(59,130,246,.20), transparent 60%),
-        radial-gradient(500px 280px at 90% 10%, rgba(34,197,94,.16), transparent 60%);
-      pointer-events:none;
-    }
-    .hero-left > *{ position:relative; z-index:2; }
-    .hero h1{
-      margin:10px 0 10px;
-      font-size: clamp(30px, 3.6vw, 44px);
-      line-height:1.05;
-      letter-spacing:-.5px;
-    }
-    .hero p{ color:var(--muted); margin:0 0 18px; font-size:16px; max-width: 62ch; }
-    .hero-cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:8px; }
-    .hero-badges{ display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
+        .logo span {
+            color: var(--primary);
+        }
 
-    .hero-right{
-      padding:18px;
-      display:flex; flex-direction:column; gap:14px;
-    }
-    .mini{
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(16,31,58,.55);
-      padding:14px;
-    }
-    .mini h3{ margin:0 0 6px; font-size:14px; color:var(--text); }
-    .mini p{ margin:0; color:var(--muted); font-size:13px; }
-    .mini strong{ color:var(--text); }
-    .grid-3{
-      display:grid; grid-template-columns:repeat(3, 1fr);
-      gap:14px;
-      margin-top:18px;
-    }
-    .tile{
-      padding:16px; border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(16,31,58,.42);
-    }
-    .tile b{ display:block; margin-bottom:6px; }
-    .tile span{ color:var(--muted); font-size:13px; }
-    .section{
-      margin-top:26px;
-    }
-    .section h2{
-      margin:0 0 10px;
-      font-size: clamp(22px, 2.4vw, 30px);
-      letter-spacing:-.3px;
-    }
-    .section p.lead{ margin:0 0 16px; color:var(--muted); max-width: 78ch; }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
 
-    .cards{
-      display:grid; grid-template-columns:repeat(3, 1fr);
-      gap:14px;
-    }
-    .service{
-      padding:18px;
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(16,31,58,.42);
-      position:relative;
-      overflow:hidden;
-    }
-    .service:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: radial-gradient(400px 160px at 10% 0%, rgba(59,130,246,.16), transparent 60%);
-      opacity:.8;
-      pointer-events:none;
-    }
-    .service > *{ position:relative; z-index:2; }
-    .service h3{ margin:0 0 6px; font-size:16px; }
-    .service p{ margin:0; color:var(--muted); font-size:13px; }
-    .service ul{ margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:13px; }
-    .tagrow{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
-    .tag{
-      font-size:12px; color:var(--muted);
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.03);
-      padding:6px 10px; border-radius:999px;
-    }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
 
-    .split{
-      display:grid; grid-template-columns: 1fr 1fr;
-      gap:14px;
-    }
-    .panel{
-      padding:18px; border-radius:18px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(16,31,58,.42);
-    }
-    .panel h3{ margin:0 0 8px; }
-    .panel p{ margin:0; color:var(--muted); }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
 
-    .steps{
-      display:grid; grid-template-columns:repeat(4,1fr);
-      gap:14px;
-      margin-top:14px;
-    }
-    .step{
-      padding:16px; border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(16,31,58,.42);
-    }
-    .step .num{
-      width:34px; height:34px; border-radius:12px;
-      display:grid; place-items:center;
-      background:rgba(59,130,246,.15);
-      border:1px solid rgba(59,130,246,.25);
-      font-weight:800;
-      margin-bottom:10px;
-    }
-    .step b{ display:block; margin-bottom:6px; }
-    .step span{ color:var(--muted); font-size:13px; }
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 10%;
+            background: radial-gradient(circle at top right, rgba(0, 123, 255, 0.1), transparent),
+                        linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8));
+            padding-top: 80px;
+        }
 
-    .testimonials{
-      display:grid; grid-template-columns:repeat(3,1fr);
-      gap:14px;
-      margin-top:12px;
-    }
-    .quote{
-      padding:18px; border-radius:18px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(16,31,58,.42);
-    }
-    .quote p{ margin:0 0 10px; color:var(--text); }
-    .quote small{ color:var(--muted); }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
 
-    .faq{
-      display:grid; grid-template-columns:1fr;
-      gap:10px;
-      margin-top:12px;
-    }
-    details{
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(16,31,58,.42);
-      border-radius:16px;
-      padding:12px 14px;
-    }
-    summary{
-      cursor:pointer;
-      font-weight:700;
-      list-style:none;
-    }
-    summary::-webkit-details-marker{ display:none; }
-    details p{ margin:10px 0 0; color:var(--muted); }
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
 
-    .contact{
-      display:grid; grid-template-columns: 1fr 1fr;
-      gap:14px;
-      margin-top:12px;
-    }
-    .contact .panel a{ color:var(--text); text-decoration:underline; text-underline-offset:3px; }
-    form{
-      display:grid; gap:10px; margin-top:10px;
-    }
-    input, textarea{
-      width:100%;
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(7,11,20,.55);
-      color:var(--text);
-      outline:none;
-    }
-    textarea{ min-height:120px; resize:vertical; }
-    .formrow{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-    .hint{ color:var(--muted); font-size:12px; margin-top:8px; }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
 
-    footer{
-      margin-top:36px;
-      border-top:1px solid var(--line);
-      padding:24px 0;
-      color:var(--muted);
-    }
-    .footer-inner{
-      display:flex; justify-content:space-between; align-items:flex-start;
-      gap:18px; flex-wrap:wrap;
-    }
-    .footer-links{ display:flex; gap:12px; flex-wrap:wrap; }
-    .footer-links a{ text-decoration:underline; text-underline-offset:3px; }
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
 
-    /* Responsive */
-    @media (max-width: 980px){
-      .hero{ grid-template-columns:1fr; }
-      .actions{ min-width:auto; }
-      .brand{ min-width:auto; }
-      nav{ justify-content:flex-start; }
-      .grid-3, .cards, .testimonials{ grid-template-columns:1fr; }
-      .split, .contact{ grid-template-columns:1fr; }
-      .steps{ grid-template-columns:1fr; }
-    }
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
 
-    /* Floating help (optional) */
-    .floatbar{
-      position:fixed; right:16px; bottom:16px;
-      display:flex; flex-direction:column; gap:10px;
-      z-index:60;
-    }
-    .floatbar .btn{ box-shadow: 0 14px 40px rgba(0,0,0,.35); }
-    .kicker{ color:var(--muted); font-size:13px; }
-    .divider{ height:1px; background:var(--line); margin:16px 0; }
+        /* Service Section */
+        section {
+            padding: 100px 10%;
+        }
 
-    /* Page header for legal pages */
-    .legal h2{ margin-top:0; }
-    .legal .panel{ background:rgba(16,31,58,.42); }
-    .legal p, .legal li{ color:var(--muted); }
-    .legal ul{ padding-left:18px; }
-    .muted{ color:var(--muted); }
-  </style>
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Workflow Section */
+        .workflow {
+            background: #161e2e;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* Trust Elements */
+        .trust-bar {
+            display: flex;
+            justify-content: space-around;
+            padding: 3rem 10%;
+            background: var(--bg-card);
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .trust-item {
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        /* Chatbot Notice */
+        .chat-promo {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        /* Contact Area */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        .fake-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .fake-form input, .fake-form textarea {
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--text-muted);
+            background: transparent;
+            color: white;
+        }
+
+        footer {
+            padding: 3rem 10%;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .contact-container { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-
 <body>
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a class="brand" href="#home" aria-label="NordWärme Startseite">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <b>NordWärme</b>
-          <small>Heizung • Sanitär • Bad • Wärmepumpe (Hamburg)</small>
+
+    <nav>
+        <div class="logo">H&S<span> Haustechnik</span></div>
+        <div class="nav-links">
+            <a href="#home">Startseite</a>
+            <a href="#services">Leistungen</a>
+            <a href="#workflow">Ablauf</a>
+            <a href="#kontakt">Kontakt</a>
         </div>
-      </a>
+    </nav>
 
-      <nav aria-label="Hauptnavigation">
-        <a class="navlink" href="#home">Start</a>
-        <a class="navlink" href="#leistungen">Leistungen</a>
-        <a class="navlink" href="#ueberuns">Über uns</a>
-        <a class="navlink" href="#referenzen">Referenzen</a>
-        <a class="navlink" href="#faq">FAQ</a>
-        <a class="navlink" href="#kontakt">Kontakt</a>
-      </nav>
-
-      <div class="actions">
-        <span class="pill"><span class="dot"></span> Rückruf in der Regel am selben Tag</span>
-        <a class="btn primary" href="#kontakt">Anfrage starten</a>
-      </div>
-    </div>
-  </header>
-
-  <main class="wrap">
-
-    <!-- HOME -->
-    <section id="view-home" class="view active" data-title="Start">
-      <div class="hero">
-        <div class="card hero-left">
-          <div class="pill" style="display:inline-flex;">
-            <span class="dot"></span>
-            Meisterbetrieb • sauber & zuverlässig • transparente Kommunikation
-          </div>
-
-          <h1>Heizung & Sanitär in Hamburg – schnell, professionell, fair.</h1>
-          <p>
-            Ob tropfender Wasserhahn, Heizungsstörung oder komplette Modernisierung:
-            Wir kümmern uns darum – von der ersten Einschätzung bis zur sauberen Ausführung.
-          </p>
-
-          <div class="hero-cta">
-            <a class="btn green" href="#kontakt">📩 Kostenlose Anfrage</a>
-            <a class="btn ghost" href="#leistungen">Unsere Leistungen →</a>
-            <a class="btn ghost" href="#faq">Häufige Fragen →</a>
-          </div>
-
-          <div class="hero-badges">
-            <span class="pill">⭐ 4,9/5 Kundenzufriedenheit (intern)</span>
-            <span class="pill">🛠️ Wartung & Reparatur</span>
-            <span class="pill">♻️ Wärmepumpe & Effizienz</span>
-            <span class="pill">🧼 Saubere Baustelle</span>
-          </div>
-
-          <div class="grid-3">
-            <div class="tile">
-              <b>Notfall?</b>
-              <span>Bei Wasserschaden / Rohrbruch bitte sofort anrufen. Wir leiten es schnell weiter.</span>
-            </div>
-            <div class="tile">
-              <b>Wärmepumpe</b>
-              <span>Planung, Austausch & Inbetriebnahme – inkl. Beratung zu Effizienz.</span>
-            </div>
-            <div class="tile">
-              <b>Bad & Sanitär</b>
-              <span>Von Armatur bis Badmodernisierung – sauber geplant, zuverlässig umgesetzt.</span>
-            </div>
-          </div>
-        </div>
-
-        <aside class="card hero-right">
-          <div class="mini">
-            <h3>📍 Einsatzgebiet</h3>
-            <p><strong>Hamburg</strong> & Umgebung (je nach Auftrag).<br><span class="muted">PLZ wird im Chat abgefragt.</span></p>
-          </div>
-          <div class="mini">
-            <h3>⏱️ Reaktionszeit</h3>
-            <p>In der Regel Rückmeldung <strong>am selben Tag</strong> (Mo–Fr).<br><span class="muted">Notfälle priorisiert.</span></p>
-          </div>
-          <div class="mini">
-            <h3>✅ So läuft’s</h3>
-            <p>Chat-Anfrage → kurze Rückfragen → Terminabsprache durch unser Team → Ausführung.</p>
-          </div>
-          <div class="mini">
-            <h3>🤖 Chat-Assistent</h3>
-            <p>Unten rechts findest du den Assistenten. Er sammelt die wichtigsten Infos für uns.</p>
-          </div>
-        </aside>
-      </div>
-
-      <div class="section">
-        <h2>Warum NordWärme?</h2>
-        <p class="lead">
-          Wir arbeiten wie ein moderner Meisterbetrieb: pünktlich, sauber, verständlich erklärt – ohne unnötiges Fachchinesisch.
-        </p>
-
-        <div class="split">
-          <div class="panel">
-            <h3>🧰 Saubere Ausführung</h3>
-            <p>Abdecken, Schutzvlies, ordentliche Übergaben – so wie man’s erwartet.</p>
-            <div class="divider"></div>
-            <p><strong>Transparente Kommunikation:</strong> Was machen wir – und warum? Kurz & klar.</p>
-          </div>
-          <div class="panel">
-            <h3>📞 Erreichbarkeit</h3>
-            <p>Du bekommst eine Rückmeldung – und bei Notfällen klare Hinweise, was sofort zu tun ist.</p>
-            <div class="divider"></div>
-            <p><strong>Gute Planung:</strong> Minimale Ausfallzeiten, sinnvolle Lösungen, langfristig gedacht.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- LEISTUNGEN -->
-    <section id="view-leistungen" class="view" data-title="Leistungen">
-      <div class="section">
-        <h2>Leistungen</h2>
-        <p class="lead">Alles rund um Heizung, Sanitär und Bad – für Privat, Vermieter und kleine Gewerbeeinheiten.</p>
-
-        <div class="cards">
-          <div class="service">
-            <h3>🔥 Heizung (Reparatur & Modernisierung)</h3>
-            <p>Störung, Austausch, Optimierung und Modernisierung – von kleinen Reparaturen bis zur Erneuerung.</p>
-            <ul>
-              <li>Störungsdiagnose vor Ort</li>
-              <li>Heizkörper / Thermostate</li>
-              <li>Hydraulischer Abgleich (je nach Anlage)</li>
-            </ul>
-            <div class="tagrow">
-              <span class="tag">Gas / (Bestand)</span>
-              <span class="tag">Regelung</span>
-              <span class="tag">Effizienz</span>
-            </div>
-          </div>
-
-          <div class="service">
-            <h3>♻️ Wärmepumpe</h3>
-            <p>Von der Einschätzung bis zur Umsetzung – Fokus auf Effizienz, Platzbedarf und sinnvolle Auslegung.</p>
-            <ul>
-              <li>Beratung & Grobplanung</li>
-              <li>Austausch / Neuinstallation</li>
-              <li>Einweisung & Übergabe</li>
-            </ul>
-            <div class="tagrow">
-              <span class="tag">Luft/Wasser</span>
-              <span class="tag">Förder-Info</span>
-              <span class="tag">Zukunftssicher</span>
-            </div>
-          </div>
-
-          <div class="service">
-            <h3>🚿 Sanitär & Bad</h3>
-            <p>Leckagen, Armaturen, WC, Dusche – und auf Wunsch Badmodernisierung aus einer Hand (Koordination).</p>
-            <ul>
-              <li>Armaturen / Siphon / Anschlüsse</li>
-              <li>WC / Spülkasten</li>
-              <li>Bad-Update / Modernisierung</li>
-            </ul>
-            <div class="tagrow">
-              <span class="tag">Sauber</span>
-              <span class="tag">Schnell</span>
-              <span class="tag">Koordiniert</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="section">
-          <h2>So läuft ein Auftrag ab</h2>
-          <p class="lead">Damit du weißt, was dich erwartet – klarer Ablauf, klare Kommunikation.</p>
-
-          <div class="steps">
-            <div class="step">
-              <div class="num">1</div>
-              <b>Anfrage</b>
-              <span>Chat-Assistent sammelt Problem, PLZ, Dringlichkeit, Kontakt.</span>
-            </div>
-            <div class="step">
-              <div class="num">2</div>
-              <b>Rückmeldung</b>
-              <span>Unser Team meldet sich, klärt Details und schlägt Optionen vor.</span>
-            </div>
-            <div class="step">
-              <div class="num">3</div>
-              <b>Termin</b>
-              <span>Termin wird mit dir abgestimmt – ohne falsche Zusagen durch den Bot.</span>
-            </div>
-            <div class="step">
-              <div class="num">4</div>
-              <b>Ausführung</b>
-              <span>Saubere Arbeit, Übergabe, kurze Erklärung – fertig.</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="panel">
-            <h3>🚨 Notfallhinweis</h3>
-            <p>
-              Bei Rohrbruch / starkem Wasseraustritt: Wasser abstellen (Hauptabsperrhahn), Strom in betroffenen Bereichen prüfen,
-              und <strong>sofort telefonisch</strong> melden. Der Chat ist für die Datenerfassung – Notfälle gehören ans Telefon.
+    <header class="hero" id="home">
+        <div class="hero-content">
+            <h1>Heizung kaputt? <br>Wir helfen schnell und zuverlässig.</h1>
+            <p>Ihr lokaler Meisterbetrieb für moderne Heizsysteme, Badmodernisierung und Notdienst. Erfahren, fair und direkt bei Ihnen vor Ort.</p>
+            <a href="#kontakt" class="btn btn-primary">Jetzt Termin vereinbaren</a>
+            <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--accent);">
+                ⚡ Schnelle Hilfe benötigt? Nutzen Sie unseren <strong>Service-Chat unten rechts!</strong>
             </p>
-          </div>
         </div>
-      </div>
-    </section>
+    </header>
 
-    <!-- ÜBER UNS -->
-    <section id="view-ueberuns" class="view" data-title="Über uns">
-      <div class="section">
-        <h2>Über NordWärme</h2>
-        <p class="lead">
-          Wir sind ein moderner Handwerksbetrieb mit Fokus auf saubere Arbeit, klare Kommunikation und sinnvolle Lösungen.
-          Unser Anspruch: Du sollst dich gut betreut fühlen – ohne Stress.
-        </p>
-
-        <div class="split">
-          <div class="panel">
-            <h3>👷 Meisterbetrieb</h3>
-            <p>Fachgerechte Ausführung, dokumentierte Übergaben, sauberer Ablauf – wie man’s erwartet.</p>
-            <div class="divider"></div>
-            <p><strong>Qualität:</strong> Lieber einmal richtig als zweimal halb.</p>
-          </div>
-          <div class="panel">
-            <h3>🧠 Beratung, die Sinn macht</h3>
-            <p>Keine unnötigen “Upsells”. Wir sagen ehrlich, was sinnvoll ist – und was nicht.</p>
-            <div class="divider"></div>
-            <p><strong>Langfristig:</strong> Effizienz + Wartbarkeit + Zuverlässigkeit.</p>
-          </div>
-        </div>
-
-        <div class="section">
-          <h2>Unsere Werte</h2>
-          <div class="cards">
-            <div class="service">
-              <h3>🤝 Verlässlich</h3>
-              <p>Klare Absprachen, ehrliche Kommunikation, pünktliche Rückmeldung.</p>
-            </div>
-            <div class="service">
-              <h3>🧼 Sauber</h3>
-              <p>Schutz der Wohnung, ordentliches Arbeiten, saubere Übergabe.</p>
-            </div>
-            <div class="service">
-              <h3>⚙️ Professionell</h3>
-              <p>Fachgerechte Umsetzung – und verständlich erklärt.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- REFERENZEN -->
-    <section id="view-referenzen" class="view" data-title="Referenzen">
-      <div class="section">
-        <h2>Referenzen</h2>
-        <p class="lead">Ein paar typische Situationen aus dem Alltag – damit du ein Gefühl bekommst.</p>
-
-        <div class="cards">
-          <div class="service">
-            <h3>Leck unter der Spüle</h3>
-            <p>Ursache gefunden, Dichtung/Anschluss erneuert, Dichtheitscheck, saubere Übergabe.</p>
-            <div class="tagrow"><span class="tag">Sanitär</span><span class="tag">Schnellhilfe</span></div>
-          </div>
-          <div class="service">
-            <h3>Heizkörper bleibt kalt</h3>
-            <p>Ventil/Regelung geprüft, Entlüftung & Durchfluss optimiert, Funktionstest.</p>
-            <div class="tagrow"><span class="tag">Heizung</span><span class="tag">Optimierung</span></div>
-          </div>
-          <div class="service">
-            <h3>Bad-Update</h3>
-            <p>Neue Armaturen, Duschbereich modernisiert, Koordination der Gewerke, termingerecht.</p>
-            <div class="tagrow"><span class="tag">Bad</span><span class="tag">Modernisierung</span></div>
-          </div>
-        </div>
-
-        <div class="section">
-          <h2>Was Kunden sagen</h2>
-          <div class="testimonials">
-            <div class="quote">
-              <p>„Sehr sauber gearbeitet und alles verständlich erklärt. Genau so wünscht man sich das.“</p>
-              <small>— Kundin aus Hamburg</small>
-            </div>
-            <div class="quote">
-              <p>„Schnelle Rückmeldung, Termin unkompliziert, Problem direkt gelöst.“</p>
-              <small>— Kunde aus Hamburg-Nord</small>
-            </div>
-            <div class="quote">
-              <p>„Professionell, freundlich, zuverlässig. Wir lassen Wartungen jetzt regelmäßig machen.“</p>
-              <small>— Vermieter (Mehrfamilienhaus)</small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="view-faq" class="view" data-title="FAQ">
-      <div class="section">
-        <h2>FAQ</h2>
-        <p class="lead">Kurz beantwortet – damit du schnell weiterkommst.</p>
-
-        <div class="faq">
-          <details>
-            <summary>Wie schnell meldet ihr euch?</summary>
-            <p>Meist am selben Tag (Mo–Fr). Notfälle werden priorisiert. Der Chat sammelt Daten und leitet weiter.</p>
-          </details>
-          <details>
-            <summary>Kann ich Preise oder feste Termine im Chat bekommen?</summary>
-            <p>Der Chat gibt keine verbindlichen Preise oder Fix-Termine. Das macht unser Team nach kurzer Klärung.</p>
-          </details>
-          <details>
-            <summary>Was soll ich bei einem Wasserschaden tun?</summary>
-            <p>Wasser abstellen (Hauptabsperrhahn), betroffene Bereiche sichern und sofort telefonisch melden.</p>
-          </details>
-          <details>
-            <summary>Wird der Chat meine Daten speichern?</summary>
-            <p>Der Assistent fragt nur das Nötigste ab (Problem, PLZ, Dringlichkeit, Kontakt), damit wir dich erreichen.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- KONTAKT -->
-    <section id="view-kontakt" class="view" data-title="Kontakt">
-      <div class="section">
-        <h2>Kontakt</h2>
-        <p class="lead">
-          Starte am besten über den Chat unten rechts – oder nutze die Kontaktoptionen hier.
-        </p>
-
-        <div class="contact">
-          <div class="panel">
-            <h3>📞 Telefon</h3>
-            <p><a href="tel:+494012345678">040 / 123 456 78</a><br><span class="muted">Mo–Fr 08:00–17:00</span></p>
-            <div class="divider"></div>
-            <h3>📍 Adresse</h3>
-            <p>NordWärme Heizung & Sanitär<br>Wärmestraße 12<br>20457 Hamburg</p>
-            <div class="divider"></div>
-            <h3>📧 E-Mail</h3>
-            <p><a href="mailto:kontakt@nordwaerme.de">kontakt@nordwaerme.de</a></p>
-          </div>
-
-          <div class="panel">
-            <h3>📩 Kurze Anfrage</h3>
-            <p class="muted">Oder direkt hier (öffnet dein Mail-Programm):</p>
-            <form onsubmit="return sendMail(event)">
-              <div class="formrow">
-                <input id="name" placeholder="Name" required />
-                <input id="phone" placeholder="Telefon" required />
-              </div>
-              <input id="plz" placeholder="PLZ / Ort" required />
-              <textarea id="msg" placeholder="Worum geht’s? (kurz beschreiben)" required></textarea>
-              <button class="btn primary" type="submit">Anfrage senden</button>
-              <div class="hint">Hinweis: Für Notfälle bitte telefonisch melden.</div>
-            </form>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="panel">
-            <h3>ℹ️ Tipp</h3>
-            <p>Wenn du ein Foto hast (z. B. Leckstelle), kannst du das beim Rückruf / per Mail nachreichen.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- IMPRESSUM (als "Seite") -->
-    <section id="view-impressum" class="view legal" data-title="Impressum">
-      <div class="section">
-        <h2>Impressum</h2>
-        <div class="panel">
-          <p><strong>NordWärme Heizung & Sanitär</strong><br>Wärmestraße 12<br>20457 Hamburg</p>
-          <p><strong>Kontakt</strong><br>Telefon: 040 / 123 456 78<br>E-Mail: kontakt@nordwaerme.de</p>
-          <p class="muted">Hinweis: Dies ist ein Beispiel-Impressum. Bitte mit euren echten Firmendaten ersetzen (Inhaber, Rechtsform, USt-ID etc.).</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- DATENSCHUTZ (als "Seite") -->
-    <section id="view-datenschutz" class="view legal" data-title="Datenschutz">
-      <div class="section">
-        <h2>Datenschutz</h2>
-        <div class="panel">
-          <p class="muted">
-            Beispieltext – bitte durch eure echte Datenschutzerklärung ersetzen (Hosting, Analytics, Chatbot-Anbieter, Kontaktformular etc.).
-          </p>
-          <ul>
-            <li>Welche Daten werden erhoben (z. B. Kontakt, PLZ, Problem)?</li>
-            <li>Wofür werden sie genutzt (Rückruf, Angebot, Terminplanung)?</li>
-            <li>Welche Tools/Anbieter werden eingesetzt (z. B. Chatling)?</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="wrap footer-inner">
-      <div>
-        <b>NordWärme</b><br>
-        <span class="muted">Heizung • Sanitär • Bad • Wärmepumpe – Hamburg</span><br>
-        <span class="muted">© <span id="year"></span> NordWärme</span>
-      </div>
-      <div class="footer-links">
-        <a href="#impressum">Impressum</a>
-        <a href="#datenschutz">Datenschutz</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
+    <div class="trust-bar">
+        <div class="trust-item">✓ Meisterbetrieb</div>
+        <div class="trust-item">✓ 24h Notdienst</div>
+        <div class="trust-item">✓ Faire Festpreise</div>
+        <div class="trust-item">✓ Regionale Nähe</div>
     </div>
-  </footer>
 
-  <!-- Floating CTA -->
-  <div class="floatbar" aria-label="Schnellaktionen">
-    <a class="btn green" href="#kontakt">📩 Anfrage</a>
-    <a class="btn ghost" href="#faq">❓ FAQ</a>
-  </div>
+    <section id="services">
+        <div class="section-title">
+            <h2>Unsere Leistungen</h2>
+            <p>Von der kleinen Reparatur bis zur kompletten energetischen Sanierung.</p>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h3>Heizungsservice</h3>
+                <p>Wartung, Reparatur und Neuinstallation von Gas- und Ölheizungen. Wir sorgen dafür, dass es warm bleibt.</p>
+            </div>
+            <div class="card">
+                <h3>Wärmepumpen</h3>
+                <p>Zukunftssicheres Heizen: Wir beraten, planen und installieren Ihre neue Wärmepumpe inklusive staatlicher Förderung.</p>
+            </div>
+            <div class="card">
+                <h3>Sanitär & Bad</h3>
+                <p>Traumbad oder tropfender Wasserhahn? Wir übernehmen die Badplanung sowie alle Sanitär-Installationen.</p>
+            </div>
+            <div class="card">
+                <h3>Notdienst</h3>
+                <p>Rohrbruch oder Heizungsausfall am Wochenende? Unser Notfall-Team ist schnellstmöglich bei Ihnen.</p>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    // Simple "multi-page" routing via hash (#home, #leistungen, ...)
-    const map = {
-      home: "view-home",
-      leistungen: "view-leistungen",
-      ueberuns: "view-ueberuns",
-      referenzen: "view-referenzen",
-      faq: "view-faq",
-      kontakt: "view-kontakt",
-      impressum: "view-impressum",
-      datenschutz: "view-datenschutz"
-    };
+    <section class="workflow" id="workflow">
+        <div class="section-title">
+            <h2>So einfach funktioniert es</h2>
+            <p>In vier Schritten zu Ihrem Ziel.</p>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h4>Anfrage stellen</h4>
+                <p>Per Telefon, Formular oder bequem im Chat.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h4>Rückruf erhalten</h4>
+                <p>Wir klären Details und vereinbaren einen Termin.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h4>Vor-Ort-Termin</h4>
+                <p>Unsere Experten prüfen die Lage und beraten Sie.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h4>Ausführung</h4>
+                <p>Saubere, fachgerechte Arbeit zum vereinbarten Preis.</p>
+            </div>
+        </div>
 
-    function setActive(hash){
-      const key = (hash || "#home").replace("#","").trim().toLowerCase();
-      const viewId = map[key] || map.home;
+        <div class="chat-promo">
+            <h3>Keine Lust auf Warteschleifen?</h3>
+            <p>Nutzen Sie unseren intelligenten Service-Assistenten (unten rechts), um sofort eine erste Einschätzung oder einen Rückrufwunsch zu hinterlassen.</p>
+        </div>
+    </section>
 
-      document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
-      const view = document.getElementById(viewId);
-      if(view) view.classList.add("active");
+    <section id="kontakt">
+        <div class="section-title">
+            <h2>Kontaktieren Sie uns</h2>
+            <p>Wir freuen uns auf Ihr Projekt.</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>H&S Haustechnik GmbH</h3>
+                <p><strong>Adresse:</strong><br>Handwerksstraße 12<br>12345 Musterstadt</p>
+                <p><strong>Telefon:</strong><br>01234 / 567 89 0</p>
+                <p><strong>E-Mail:</strong><br>info@hs-haustechnik-beispiel.de</p>
+                <p><strong>Bürozeiten:</strong><br>Mo - Fr: 07:30 - 16:30 Uhr</p>
+            </div>
+            <div class="fake-form">
+                <input type="text" placeholder="Ihr Name">
+                <input type="email" placeholder="Ihre E-Mail-Adresse">
+                <textarea rows="5" placeholder="Wie können wir Ihnen helfen?"></textarea>
+                <button class="btn btn-primary" style="border: none;">Nachricht senden</button>
+            </div>
+        </div>
+    </section>
 
-      document.querySelectorAll(".navlink").forEach(a => {
-        const href = (a.getAttribute("href") || "").toLowerCase();
-        a.classList.toggle("active", href === ("#" + key) || (key==="home" && href==="#home"));
-      });
+    <footer>
+        <p>&copy; 2026 H&S Haustechnik GmbH | Impressum | Datenschutz</p>
+    </footer>
 
-      // Scroll top on page change
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      // Update title slightly
-      const t = view?.dataset?.title ? `NordWärme • ${view.dataset.title}` : "NordWärme";
-      document.title = t;
-    }
-
-    window.addEventListener("hashchange", () => setActive(location.hash));
-    setActive(location.hash);
-
-    // Mailto form helper
-    function sendMail(e){
-      e.preventDefault();
-      const name = document.getElementById("name").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-      const plz = document.getElementById("plz").value.trim();
-      const msg = document.getElementById("msg").value.trim();
-
-      const subject = encodeURIComponent("Anfrage • NordWärme Website");
-      const body = encodeURIComponent(
-        `Name: ${name}\nTelefon: ${phone}\nPLZ/Ort: ${plz}\n\nNachricht:\n${msg}\n`
-      );
-      window.location.href = `mailto:kontakt@nordwaerme.de?subject=${subject}&body=${body}`;
-      return false;
-    }
-
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    <script> window.chtlConfig = {chatbotId: "3142966435" } </script>
-<script async data-id="3142966435" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
-  
-</body>
+    </body>
 </html>
